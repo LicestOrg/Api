@@ -17,7 +17,7 @@ export class CreateElementDto {
     type: [PropertyEntity],
   })
   @IsNotEmpty()
-  properties: Property[];
+  properties_: Property[];
 
   @ApiProperty({
     description: 'The type of the element',
