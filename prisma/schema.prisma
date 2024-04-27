@@ -16,42 +16,42 @@ enum TypeProperty {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  tag       String   @unique
-  email     String   @unique
-  name      String
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  Page      Page[]
+  id          String   @id @default(uuid())
+  tag         String   @unique
+  email       String   @unique
+  name        String
+  password    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  pages       Page[]
 }
 
 model Page {
-  id         String         @id @default(uuid())
-  owner      User           @relation(fields: [ownerId], references: [id])
-  ownerId    String
-  title      String
-  properties TypeProperty[]
-  createdAt  DateTime       @default(now())
-  updatedAt  DateTime       @updatedAt
-  Element    Element[]
+  id          String         @id @default(uuid())
+  owner       User           @relation(fields: [ownerId], references: [id])
+  ownerId     String
+  title       String
+  properties  TypeProperty[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  elements    Element[]
 }
 
 model Element {
-  id        Int        @id @default(autoincrement())
-  page      Page       @relation(fields: [pageId], references: [id])
-  pageId    String
-  name      String
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  Property  Property[]
+  id          Int        @id @default(autoincrement())
+  page        Page       @relation(fields: [pageId], references: [id])
+  pageId      String
+  name        String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  properties  Property[]
 }
 
 model Property {
-  id        Int          @id @default(autoincrement())
-  element   Element      @relation(fields: [elementId], references: [id])
-  elementId Int
-  type      TypeProperty
-  name      String
-  value     String
+  id          Int          @id @default(autoincrement())
+  element     Element      @relation(fields: [elementId], references: [id])
+  elementId   Int
+  type        TypeProperty
+  name        String
+  value       String
 }
