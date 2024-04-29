@@ -6,18 +6,21 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { PropertiesService } from './properties.service';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
 import { PropertyEntity } from './entities/property.entity';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('properties')
 @ApiTags('properties')
 export class PropertiesController {
   constructor(private readonly propertiesService: PropertiesService) {}
 
+  @UseGuards(AuthGuard)
   @Post()
   @ApiCreatedResponse({
     status: 201,
@@ -28,6 +31,7 @@ export class PropertiesController {
     return this.propertiesService.create(createPropertyDto);
   }
 
+  @UseGuards(AuthGuard)
   @Get(':elementId/properties')
   @ApiOkResponse({
     status: 200,
@@ -38,6 +42,7 @@ export class PropertiesController {
     return this.propertiesService.findAll(+elementId);
   }
 
+  @UseGuards(AuthGuard)
   @Get(':id')
   @ApiOkResponse({
     status: 200,
@@ -48,6 +53,7 @@ export class PropertiesController {
     return this.propertiesService.findOne(+id);
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':id')
   @ApiOkResponse({
     status: 200,
@@ -61,6 +67,7 @@ export class PropertiesController {
     return this.propertiesService.update(+id, updatePropertyDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   @ApiOkResponse({
     status: 200,

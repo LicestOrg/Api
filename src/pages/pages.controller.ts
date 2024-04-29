@@ -6,18 +6,21 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { PagesService } from './pages.service';
 import { CreatePageDto } from './dto/create-page.dto';
 import { UpdatePageDto } from './dto/update-page.dto';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { PageEntity } from './entities/page.entity';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('pages')
 @ApiTags('pages')
 export class PagesController {
   constructor(private readonly pagesService: PagesService) {}
 
+  @UseGuards(AuthGuard)
   @Post()
   @ApiCreatedResponse({
     status: 201,
@@ -28,6 +31,7 @@ export class PagesController {
     return this.pagesService.create(createPageDto);
   }
 
+  @UseGuards(AuthGuard)
   @Get(':id')
   @ApiOkResponse({
     status: 200,
@@ -38,6 +42,7 @@ export class PagesController {
     return this.pagesService.findAll(id);
   }
 
+  @UseGuards(AuthGuard)
   @Get(':id')
   @ApiOkResponse({
     status: 200,
@@ -48,6 +53,7 @@ export class PagesController {
     return this.pagesService.findOne(id);
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':id')
   @ApiOkResponse({
     status: 200,
@@ -58,6 +64,7 @@ export class PagesController {
     return this.pagesService.update(id, updatePageDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   @ApiOkResponse({
     status: 200,

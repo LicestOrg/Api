@@ -1,33 +1,24 @@
 import {
   Controller,
   Get,
-  Post,
   Body,
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { UserEntity } from './entities/user.entity';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('users')
 @ApiTags('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
-  @ApiCreatedResponse({
-    status: 201,
-    description: 'Create a new user.',
-    type: UserEntity,
-  })
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
-  }
-
+  @UseGuards(AuthGuard)
   @Get()
   @ApiOkResponse({
     status: 200,
@@ -38,6 +29,7 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @UseGuards(AuthGuard)
   @Get(':id')
   @ApiOkResponse({
     status: 200,
@@ -48,6 +40,7 @@ export class UsersController {
     return this.usersService.findOne(id);
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':id')
   @ApiOkResponse({
     status: 200,
@@ -58,6 +51,7 @@ export class UsersController {
     return this.usersService.update(id, updateUserDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   @ApiOkResponse({
     status: 200,

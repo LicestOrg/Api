@@ -6,18 +6,21 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { ElementsService } from './elements.service';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CreateElementDto } from './dto/create-element.dto';
 import { UpdateElementDto } from './dto/update-element.dto';
 import { ElementEntity } from './entities/element.entity';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('elements')
 @ApiTags('elements')
 export class ElementsController {
   constructor(private readonly elementsService: ElementsService) {}
 
+  @UseGuards(AuthGuard)
   @Post()
   @ApiCreatedResponse({
     status: 201,
@@ -28,6 +31,7 @@ export class ElementsController {
     return this.elementsService.create(createElementDto);
   }
 
+  @UseGuards(AuthGuard)
   @Get(':pageId/elements')
   @ApiOkResponse({
     status: 200,
@@ -38,6 +42,7 @@ export class ElementsController {
     return this.elementsService.findAll(pageId);
   }
 
+  @UseGuards(AuthGuard)
   @Get(':id')
   @ApiOkResponse({
     status: 200,
@@ -48,6 +53,7 @@ export class ElementsController {
     return this.elementsService.findOne(+id);
   }
 
+  @UseGuards(AuthGuard)
   @Patch(':id')
   @ApiOkResponse({
     status: 200,
@@ -58,6 +64,7 @@ export class ElementsController {
     return this.elementsService.update(+id, updateElementDto);
   }
 
+  @UseGuards(AuthGuard)
   @Delete(':id')
   @ApiOkResponse({
     status: 200,
