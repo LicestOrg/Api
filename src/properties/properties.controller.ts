@@ -9,7 +9,12 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { PropertiesService } from './properties.service';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
 import { PropertyEntity } from './entities/property.entity';
@@ -17,6 +22,7 @@ import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('properties')
 @ApiTags('properties')
+@ApiBearerAuth()
 export class PropertiesController {
   constructor(private readonly propertiesService: PropertiesService) {}
 

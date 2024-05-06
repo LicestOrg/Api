@@ -11,12 +11,18 @@ import {
 import { PagesService } from './pages.service';
 import { CreatePageDto } from './dto/create-page.dto';
 import { UpdatePageDto } from './dto/update-page.dto';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { PageEntity } from './entities/page.entity';
 import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('pages')
 @ApiTags('pages')
+@ApiBearerAuth()
 export class PagesController {
   constructor(private readonly pagesService: PagesService) {}
 

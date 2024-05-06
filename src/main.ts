@@ -17,6 +17,7 @@ async function bootstrap() {
     .setTitle('Licest API')
     .setDescription('The Licest API description')
     .setVersion('0.1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

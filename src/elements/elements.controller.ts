@@ -9,7 +9,12 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ElementsService } from './elements.service';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 import { CreateElementDto } from './dto/create-element.dto';
 import { UpdateElementDto } from './dto/update-element.dto';
 import { ElementEntity } from './entities/element.entity';
@@ -17,6 +22,7 @@ import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('elements')
 @ApiTags('elements')
+@ApiBearerAuth()
 export class ElementsController {
   constructor(private readonly elementsService: ElementsService) {}
 
