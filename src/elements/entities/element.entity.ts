@@ -45,13 +45,6 @@ export class ElementEntity implements Element {
   updatedAt: Date;
 
   @ApiProperty({
-    description: 'The type of the element',
-    type: String,
-    example: 'type',
-  })
-  type: string;
-
-  @ApiProperty({
     description: 'The name of the element',
     type: String,
     example: 'name',

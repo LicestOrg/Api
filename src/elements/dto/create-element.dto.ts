@@ -1,5 +1,4 @@
-import { Property } from '@prisma/client';
-import { PropertyEntity } from 'src/properties/entities/property.entity';
+import { CreatePropertyElementDto } from 'src/properties/dto/create-property.dto';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 
@@ -14,18 +13,10 @@ export class CreateElementDto {
 
   @ApiProperty({
     description: 'The properties of the element',
-    type: [PropertyEntity],
+    type: [CreatePropertyElementDto],
   })
   @IsNotEmpty()
-  properties_: Property[];
-
-  @ApiProperty({
-    description: 'The type of the element',
-    type: String,
-    example: 'type',
-  })
-  @IsNotEmpty()
-  type: string;
+  properties: CreatePropertyElementDto[];
 
   @ApiProperty({
     description: 'The name of the element',

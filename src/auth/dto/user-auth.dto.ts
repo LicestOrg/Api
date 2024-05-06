@@ -3,6 +3,14 @@ import { IsNotEmpty, IsEmail } from 'class-validator';
 
 export class UserAuthDto {
   @ApiProperty({
+    description: 'The id of the user',
+    type: String,
+    example: 'a2606e5e-8fbd-43a3-9e3d-f0b0aa03cb31',
+  })
+  @IsNotEmpty()
+  id: string;
+
+  @ApiProperty({
     description: 'The tag of the user',
     type: String,
     example: 'usertag',

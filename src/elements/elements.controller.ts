@@ -32,7 +32,7 @@ export class ElementsController {
   }
 
   @UseGuards(AuthGuard)
-  @Get(':pageId/elements')
+  @Get('page/:pageId')
   @ApiOkResponse({
     status: 200,
     description: 'Return all elements by page id.',

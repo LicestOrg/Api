@@ -18,14 +18,15 @@ export class AuthService {
     createUserDto.password = hash;
     const user = await this.usersService.create(createUserDto);
     return {
+      id: user.id,
+      tag: user.tag,
       email: user.email,
       name: user.name,
-      tag: user.tag,
       access_token: this.jwtService.sign({ email: user.email, sub: user.id }),
     };
   }
 
-  async signIn(email: string, pass: string): Promise<{ access_token: string }> {
+  async signIn(email: string, pass: string): Promise<UserAuthDto> {
     const user = await this.usersService.findByEmail(email);
     if (!user) {
       throw new UnauthorizedException();
@@ -36,6 +37,10 @@ export class AuthService {
     }
     const payload = { email: user.email, sub: user.id };
     return {
+      id: user.id,
+      tag: user.tag,
+      email: user.email,
+      name: user.name,
       access_token: this.jwtService.sign(payload),
     };
   }

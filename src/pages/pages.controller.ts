@@ -32,7 +32,7 @@ export class PagesController {
   }
 
   @UseGuards(AuthGuard)
-  @Get(':id')
+  @Get('/user/:id')
   @ApiOkResponse({
     status: 200,
     description: 'Return all pages by user id.',

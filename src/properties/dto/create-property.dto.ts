@@ -19,7 +19,32 @@ export class CreatePropertyDto {
   type: TypeProperty;
 
   @ApiProperty({
-    description: 'The name of the property',
+    description: 'The name of the propert y',
+    type: String,
+    example: 'name',
+  })
+  @IsNotEmpty()
+  name: string;
+
+  @ApiProperty({
+    description: 'The value of the property',
+    type: String,
+    example: 'value',
+  })
+  @IsNotEmpty()
+  value: string;
+}
+
+export class CreatePropertyElementDto {
+  @ApiProperty({
+    description: 'The type of the property',
+    // type: TypeProperty,
+  })
+  @IsNotEmpty()
+  type: TypeProperty;
+
+  @ApiProperty({
+    description: 'The name of the propert y',
     type: String,
     example: 'name',
   })

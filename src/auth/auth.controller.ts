@@ -1,9 +1,8 @@
 import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
-import { AuthService } from './auth.service';
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from '../users/dto/create-user.dto';
 import { UserAuthDto } from './dto/user-auth.dto';
-import { TokenDto } from './dto/token.dto';
+import { AuthService } from './auth.service';
 
 @Controller('auth')
 @ApiTags('auth')
@@ -24,9 +23,9 @@ export class AuthController {
   @ApiCreatedResponse({
     status: HttpStatus.OK,
     description: 'The user has been successfully logged in.',
-    type: TokenDto,
+    type: UserAuthDto,
   })
-  signIn(@Body() signInDto: Record<string, any>) {
+  signIn(@Body() signInDto: Record<string, string>) {
     return this.authService.signIn(signInDto.email, signInDto.password);
   }
 }
