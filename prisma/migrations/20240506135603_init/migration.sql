@@ -19,6 +19,7 @@ CREATE TABLE "Page" (
     "id" TEXT NOT NULL,
     "ownerId" TEXT NOT NULL,
     "title" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
     "properties" "TypeProperty"[],
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,

@@ -32,6 +32,13 @@ export class PageEntity implements Page {
   title: string;
 
   @ApiProperty({
+    description: 'The type of the page',
+    type: String,
+    example: 'TABLE',
+  })
+  type: string;
+
+  @ApiProperty({
     description: 'The properties for the elements of the page',
     // type: () => [TypeProperty],
   })

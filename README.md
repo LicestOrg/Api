@@ -23,6 +23,7 @@ Page {
     Uuid            ownerId
 
     String          title
+    String          type
     TypeProperty[]  properties
 
     Date            createdAt

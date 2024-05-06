@@ -14,4 +14,11 @@ export class CreatePageDto {
     example: 'title',
   })
   title: string;
+
+  @ApiProperty({
+    description: 'The type of the page',
+    type: String,
+    example: 'TABLE',
+  })
+  type: string;
 }

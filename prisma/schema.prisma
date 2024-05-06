@@ -31,6 +31,7 @@ model Page {
   owner       User           @relation(fields: [ownerId], references: [id])
   ownerId     String
   title       String
+  type        String
   properties  TypeProperty[]
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
