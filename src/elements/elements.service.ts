@@ -45,13 +45,7 @@ export class ElementsService {
     });
   }
 
-  async remove(id: number) {
-    await this.prisma.property.deleteMany({
-      where: { elementId: id },
-    });
-
-    return await this.prisma.element.delete({
-      where: { id },
-    });
+  remove(id: number) {
+    return this.prisma.element.delete({ where: { id } });
   }
 }
