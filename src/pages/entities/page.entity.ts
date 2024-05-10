@@ -1,6 +1,6 @@
 import { Page, TypeProperty, User } from '@prisma/client';
-import { UserEntity } from 'src/users/entities/user.entity';
-import { ElementEntity } from 'src/elements/entities/element.entity';
+import { UserEntity } from '../../users/entities/user.entity';
+import { ElementEntity } from '../../elements/entities/element.entity';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class PageEntity implements Page {

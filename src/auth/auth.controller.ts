@@ -21,7 +21,7 @@ export class AuthController {
 
   @Post('login')
   @ApiCreatedResponse({
-    status: HttpStatus.OK,
+    status: HttpStatus.CREATED,
     description: 'The user has been successfully logged in.',
     type: UserAuthDto,
   })

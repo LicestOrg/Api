@@ -18,7 +18,7 @@ import {
 import { CreateElementDto } from './dto/create-element.dto';
 import { UpdateElementDto } from './dto/update-element.dto';
 import { ElementEntity } from './entities/element.entity';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('elements')
 @ApiTags('elements')

@@ -1,4 +1,4 @@
-import { CreatePropertyElementDto } from 'src/properties/dto/create-property.dto';
+import { CreatePropertyElementDto } from '../../properties/dto/create-property.dto';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 

@@ -1,5 +1,5 @@
 import { Property, Element, TypeProperty } from '@prisma/client';
-import { ElementEntity } from 'src/elements/entities/element.entity';
+import { ElementEntity } from '../../elements/entities/element.entity';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class PropertyEntity implements Property {
