@@ -21,6 +21,7 @@ cd Api
 
 Start the api server
 ```bash
+npx prisma migrate dev --name init # Only the first time
 npm ci
 npm run start:dev
 ```
