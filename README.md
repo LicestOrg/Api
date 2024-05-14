@@ -26,7 +26,14 @@ npm ci
 npm run start:dev
 ```
 
-## The database schema
+## Documentation
+
+All the route can be found at the `/api` when you start the server and can be used without the app.
+
+> [!WARNING]
+> Most of the route are secured with JWT
+
+### The database schema
 
 ```mermaid
 erDiagram
