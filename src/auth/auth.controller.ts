@@ -1,6 +1,7 @@
 import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
-import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiTags, ApiProperty } from '@nestjs/swagger';
 import { CreateUserDto } from '../users/dto/create-user.dto';
+import { LoginAuthDto } from './dto/login-auth.dto';
 import { UserAuthDto } from './dto/user-auth.dto';
 import { AuthService } from './auth.service';
 
@@ -25,7 +26,7 @@ export class AuthController {
     description: 'The user has been successfully logged in.',
     type: UserAuthDto,
   })
-  signIn(@Body() signInDto: Record<string, string>) {
-    return this.authService.signIn(signInDto.email, signInDto.password);
+  signIn(@Body() loginAuthDto: LoginAuthDto) {
+    return this.authService.signIn(loginAuthDto.email, loginAuthDto.password);
   }
 }
